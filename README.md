@@ -312,8 +312,12 @@ resource "aws_security_group" "sg_private" {
  ![Nat](/Images/Instance.jpg/)
 
 
+**Now when we connect to the public ip of wordpress instance it opens the Wordpress **
 
-
+ ![Nat](/Images/Word.jpg/)
+ 
+ 
+ 
   
 
 
