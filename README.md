@@ -292,7 +292,7 @@ resource "aws_security_group" "sg_private" {
     }
   } 
   ```
-  - MySQL Instance
+   - MySQL Instance
   
 ```
    resource "aws_instance" "mysql-private" {
@@ -309,6 +309,9 @@ resource "aws_security_group" "sg_private" {
 }
 
 ```
+ ![Nat](/Images/Instance.jpg/)
+
+
 
 
   
