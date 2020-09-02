@@ -1,8 +1,9 @@
 # Deploying-the-MySQL-and-Wordpress-architecture-on-AWS-instance
 
 ![alt text](https://assets.cloudacademy.com/bakery/media/uploads/entity/blobid0-e71a27a0-4e29-460b-9654-88f7128d9f82.png)
+
 **Project Description**
-Steps:
+-Steps:
 - Write a Infrastructure as code using terraform, which automatically create a VPC.
 
 - In that VPC we have to create 2 subnets:
