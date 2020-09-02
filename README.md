@@ -1,0 +1,1 @@
+# Deploying-the-MySQL-and-Wordpress-architecture-on-AWS-instance-
