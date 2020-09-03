@@ -59,7 +59,8 @@ And  now we run  ```terraform apply --auto-approve``` to create the required inf
 So here our infrastructure is created let's look at its components and code used for it 
 
 - Here we provide information about the provider , the profile and the availibility zone 
-```provider "aws"{
+```
+  provider "aws"{
   region    = "ap-south-1"
   profile   = "AWS"
 }
@@ -67,7 +68,8 @@ So here our infrastructure is created let's look at its components and code used
 
 - Here is the VPC 
   Amazon Virtual Private Cloud (Amazon VPC) lets you provision a logically isolated section of the AWS Cloud where you can launch AWS resources in a virtual network that you define
-```resource "aws_vpc" "main" {
+```
+  resource "aws_vpc" "main" {
   cidr_block       = "192.168.0.0/16"
   enable_dns_hostnames = "true"
   instance_tenancy = "default"
@@ -79,7 +81,8 @@ So here our infrastructure is created let's look at its components and code used
 ![Job1](/Images/VPC.jpg/)
 
 - Then after VPC I have created Internet Gateway so that the public instance can connect to outside world
-```resource "aws_internet_gateway" "igw" {
+```
+  resource "aws_internet_gateway" "igw" {
 
   vpc_id = "${aws_vpc.main.id}"
 
@@ -91,7 +94,8 @@ So here our infrastructure is created let's look at its components and code used
 ![Job1](/Images/igw.jpg/)
 
 - Now here is our Private and Public Subnets
-```resource "aws_subnet" "public" {
+```
+  resource "aws_subnet" "public" {
   vpc_id     = "${aws_vpc.main.id}"
   cidr_block = "192.168.0.0/24"
   availability_zone = "ap-south-1a"
@@ -120,7 +124,8 @@ resource "aws_subnet" "private" {
 
 - Route table
   A route table contains a set of rules, called routes, that are used to determine where network traffic from your subnet or gateway is directed and I have attached it to public subnet
- ```resource "aws_route_table" "public_route" {
+ ```
+  resource "aws_route_table" "public_route" {
   vpc_id = "${aws_vpc.main.id}"
   route {
     cidr_block = "0.0.0.0/0"
@@ -145,7 +150,8 @@ resource "aws_route_table_association" "public_subnet_asso" {
   
   ![Nat](/Images/Nat.jpg/)
   
-```resource "aws_eip" "lb" {
+```
+   resource "aws_eip" "lb" {
    vpc      = true
    depends_on = [aws_internet_gateway.igw]
 }
@@ -185,7 +191,8 @@ resource "aws_route_table_association" "nat_route_asso" {
 
 - Now I have created the security groups for the instances
   - For Wordpress instance
-```resource "aws_security_group" "sg_public" {
+```
+  resource "aws_security_group" "sg_public" {
   name        = "vpc_sg"
   description = "Allow HTTP , SSH and ICMP"
   vpc_id      = "${aws_vpc.main.id}"
@@ -234,7 +241,7 @@ resource "aws_route_table_association" "nat_route_asso" {
 - For MySQL Instance
 
 ```
-resource "aws_security_group" "sg_private" {
+  resource "aws_security_group" "sg_private" {
 
   name        = "sg_private"
   description = "Allow wordpress inbound traffic"
